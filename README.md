@@ -9,7 +9,7 @@ To use the ToDo webApp, you need to do the following:
 2. Pull the source code from https://github.com/cagrawal11/ToDo-list-web-app.git
 
 3. Navigate to the project folder from Terminal and run the below command:
-y
+
 	python manage.py makemigrations
 	python manage.py migrate
 	python manage.py runserver
