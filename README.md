@@ -14,4 +14,4 @@ To use the ToDo webApp, you need to do the following:
 	python manage.py migrate
 	python manage.py runserver
 
-4. Open web broweser and goto 127.0.0.1.:8000/ to access the app
+4. Open web broweser and goto 127.0.0.1.:8000/ to access the app.	
