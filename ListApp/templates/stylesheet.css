@@ -1,0 +1,9 @@
+.container{
+	margin: auto;
+	background-color: gray;
+	width: 500px;
+}
+
+h1{
+	float: center;
+}
