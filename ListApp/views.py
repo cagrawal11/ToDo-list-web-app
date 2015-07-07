@@ -18,9 +18,10 @@ def index_view(request):
 
 @csrf_protect
 def add_task(request):
-	c = {}
-	c.update(csrf(request))
+	#c = {}
+	#c.update(csrf(request))
 	#task_description = request.POST['taskToDo']
+	c = RequestContext(request)
 	task = models.AddTask(TaskDecription = 'first task', TaskCreateOn = datetime.datetime.now())
 	task.save()
-	return render_to_response("addTask.html", c)
+	return render("addTask.html", c = RequestContext(request))
