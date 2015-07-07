@@ -12,14 +12,16 @@
 		<hr />
 		<h2>Tasks for today: {{ date }}</h2><hr/>
 		<label>All your tasks are noted and will be reminded for sure</label>
-		<form action="addTask.html" method="POST">
+		<form action="addTask.html" method="post">
+			{% csrf_token %}
+			
 			<label>Add a Task</label><br>
 			<textarea name="taskToDo" rows="10" cols="30">
 			</textarea>
 			<input type="submit" value="Add Task">
 		</form>	
 
-		<p>My paragraph{{ data1 }}</p>
+		<p>{{ data1 }}</p>
 	</div>
   	
 
