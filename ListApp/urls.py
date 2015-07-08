@@ -11,5 +11,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^$', views.index_view, name='index'),
-	url(r'^addTask.html$', views.add_task, name='addTask')
+	url(r'^addTask.html$', views.add_task, name='add_task')
 )
