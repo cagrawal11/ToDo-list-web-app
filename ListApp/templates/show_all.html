@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ToDo WebApp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="container">
+		<h3>All Tasks</h3>
+
+		{%if all_task_list %}
+		<ul>
+			{% for tasks in all_task_list %}
+				<li>{{ tasks.TaskDescription }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div>
+  	
+
+</body>
+</html>

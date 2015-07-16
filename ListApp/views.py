@@ -9,10 +9,10 @@ from django.views.decorators.csrf import csrf_protect
 from django.core.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt
 
-
-
 import models, datetime
 # Create your views here.
+
+
 
 def index_view(request):
 	#return HttpResponse('hello world')
@@ -23,7 +23,16 @@ def add_task(request):
 	#c = {}
 	#c.update(csrf(request))
 	#task_description = request.POST['taskToDo']if request.
-	c = RequestContext(request)
-	task = models.AddTask(TaskDescription = 'first task', TaskCreatedOn = datetime.datetime.now())
-	task.save()
-	return render("addTask.html", RequestContext(request))
+	if request.method == "POST":
+		c = RequestContext(request)
+		abc = request.POST['taskToDo']
+		tasktext = models.AddTask(TaskDescription = abc, TaskCreatedOn = datetime.datetime.now())
+		tasktext.save()
+		'''add message pop-up "Task Added successfully" '''
+		return render(request,"index.html",{})
+
+@csrf_exempt
+def show_all(request):
+	all_task_list = models.AddTask.objects.all()
+	context = {'all_task_list': all_task_list} #only 5 are passed now
+	return render(request, 'show_all.html', context)

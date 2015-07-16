@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 import datetime
 
 # Create your models here.
@@ -10,10 +12,10 @@ class ToDOList(models.Model):
 	List_name = models.CharField(max_length=255, default='')
 '''
 
-
-
 class AddTask(models.Model):
-#	Task_Id = models.CharField(max_length=255, primary_key=True)
 	TaskDescription = models.TextField()
-	TaskCreatedOn = models.DateTimeField(auto_now_add=True)
-	
+	TaskCreatedOn = models.DateTimeField()
+	TaskAuthor = models.CharField(max_length=20, default='Chetan')
+
+	def __str__(self):
+		return self.TaskCreatedOn
