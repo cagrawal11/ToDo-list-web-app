@@ -13,4 +13,6 @@ urlpatterns = patterns('',
 	url(r'^$', views.index_view, name='index'),
 	url(r'^addTask.html$', views.add_task, name='add_task'),
 	url(r'^show_all.html$', views.show_all, name='show_all'),
+	url(r'^index.html$', views.sign_up, name='sign_up'),
+	url(r'^index.html$', views.sign_in, name='sign_in')
 )

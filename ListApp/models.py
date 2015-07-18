@@ -16,6 +16,6 @@ class AddTask(models.Model):
 	TaskDescription = models.TextField()
 	TaskCreatedOn = models.DateTimeField()
 	TaskAuthor = models.CharField(max_length=20, default='Chetan')
-
-	def __str__(self):
-		return self.TaskCreatedOn
+	
+	#def __str__(self):
+	#	return self.TaskDescription

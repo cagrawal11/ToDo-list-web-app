@@ -3,3 +3,4 @@ from ListApp.models import AddTask
 # Register your models here.
 
 admin.site.register(AddTask)
+#admin.site.register(User)

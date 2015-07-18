@@ -7,7 +7,7 @@
 </head>
 
 <body>
-	<div class="container">
+	<div class="wrapper">
 		<h1>ToDo App</h1>
 		<hr />
 		<h2>Tasks for today: {{ date }}</h2><hr/>
@@ -23,10 +23,58 @@
 		<form action="show_all.html" method="post">
 			<input type="submit" value="Show All" name="show_all">
 		</form>
+		<div class="login block">
+			<form action="index.html" method="POST">
+			{% csrf_token %}
+			{% if user %}
+				<p>Welcome {{user.username}}</p>
+			{% endif %}
+			{% if messages %}
+				<ul class="messages">
+    			{% for message in messages %}
+    				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    			{% endfor %}
+				</ul>
+			{% endif %}
+				<br>
+				<label>Username</label>
+				<input type="textfield" name="username" placeholder="Username"><br>
+				<label>Password</label>
+				<input type="password" name="password" placeholder="Password"><br>
+				<label>Confirm Password</label>
+				<input type="password" name="confirm_password" placeholder="Re-enter Password">
+				<br><input type="submit" value="Register New" name="sign_up">
+			</form>	
+		</div>
+		
+		
+		<form method="post">
+			{% csrf_token %}
+			{% if user %}
+				<p>Welcome {{user.username}}</p>
+			{% endif %}
+			{% if messages %}
+				<ul class="messages">
+    			{% for message in messages %}
+    				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    			{% endfor %}
+				</ul>
+			{% endif %}
+			<br>
+			<label>Username</label>
+			<input type="textfield" name="username" placeholder="Username"><br>
+			<label>Password</label>
+			<input type="password" name="password" placeholder="Password"><br>
+			<input type="submit" value="Sign Ip" name="sign_in" style="">
+		</form>
+		
+		<form action="show_all.html" method="post">
+			{% csrf_token %}
+			<input type="submit" value="Delete task" name="delete_task" style="float:right;margin-right:20px">
+		</form>
 
-		<p>{{ data1 }}</p>
 	</div>
-  	
+  	<footer>{{ data1 }}</footer>
 
 </body>
 </html>
