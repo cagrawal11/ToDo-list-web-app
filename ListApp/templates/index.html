@@ -4,6 +4,7 @@
 <head>
   <title>ToDo WebApp</title>
   <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.js"></script>
 </head>
 
 <body>
@@ -23,19 +24,20 @@
 		<form action="show_all.html" method="post">
 			<input type="submit" value="Show All" name="show_all">
 		</form>
+
 		<div class="login block">
 			<form action="index.html" method="POST">
-			{% csrf_token %}
-			{% if user %}
-				<p>Welcome {{user.username}}</p>
-			{% endif %}
-			{% if messages %}
-				<ul class="messages">
-    			{% for message in messages %}
-    				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    			{% endfor %}
-				</ul>
-			{% endif %}
+				{% csrf_token %}
+				{% if user %}
+					<p>You have registered successfully, {{user.username}}</p>
+				{% endif %}
+				{% if messages %}
+					<ul class="messages">
+    				{% for message in messages %}
+    					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    				{% endfor %}
+					</ul>
+				{% endif %}
 				<br>
 				<label>Username</label>
 				<input type="textfield" name="username" placeholder="Username"><br>
@@ -46,34 +48,47 @@
 				<br><input type="submit" value="Register New" name="sign_up">
 			</form>	
 		</div>
-		
-		
-		<form method="post">
-			{% csrf_token %}
-			{% if user %}
-				<p>Welcome {{user.username}}</p>
-			{% endif %}
-			{% if messages %}
-				<ul class="messages">
-    			{% for message in messages %}
-    				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    			{% endfor %}
-				</ul>
-			{% endif %}
-			<br>
-			<label>Username</label>
-			<input type="textfield" name="username" placeholder="Username"><br>
-			<label>Password</label>
-			<input type="password" name="password" placeholder="Password"><br>
-			<input type="submit" value="Sign Ip" name="sign_in" style="">
-		</form>
-		
+		<div>
+			<form action="index.html" method="post">
+				{% csrf_token %}
+				{% if user %}
+					<p>Welcome {{user.username}}</p>
+				{% endif %}
+				{% if messages %}
+					<ul class="messages">
+	    			{% for message in messages %}
+	    				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    			{% endfor %}
+					</ul>
+				{% endif %}
+				<br>
+				<div id="show_div">
+					<label>Username</label>
+				<input type="textfield" name="username" placeholder="Username"><br>
+				<label>Password</label>
+				<input type="password" name="password" placeholder="Password"><br>
+				</div>
+				<input type="submit" value="Sign In" name="sign_in" style="" onclick="SignInShow(show_div)">
+			</form>	
+		</div>
+				
 		<form action="show_all.html" method="post">
 			{% csrf_token %}
 			<input type="submit" value="Delete task" name="delete_task" style="float:right;margin-right:20px">
 		</form>
 
 	</div>
+	<script type="text/javascript">
+		function SignInShow(divId) {
+			if(false == $(divId).is(':visible')){
+				$(divId).show(250)
+			}
+			else{
+				$(divId).hide(250)
+			}
+
+		};
+	</script>
   	<footer>{{ data1 }}</footer>
 
 </body>

@@ -24,7 +24,10 @@ def sign_up(request):
 	if request.method == 'POST':
 		username = request.POST['username']
 		password = request.POST['password']
-		confirm_password = request.POST['confirm_password']
+		confirm_password = request.POST.get('confirm_password', False)
+		if username == '' or password == '' or confirm_password == '':
+			messages.error(request, "No field can be left empty")
+			return render(request, "index.html", {})
 		if password != confirm_password:
 			#print "AG"
 			messages.error(request, "passwords don't!!")
