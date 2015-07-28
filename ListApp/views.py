@@ -91,5 +91,6 @@ def show_today(request):
 	return render(request, 'show_all.html', context)
 	
 
-#@csrf_exempt
-#def delete_task(render):
+@csrf_exempt
+def delete_task(render):
+	

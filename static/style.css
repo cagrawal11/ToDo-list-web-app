@@ -1,0 +1,12 @@
+.wrapper{
+	margin: auto;
+	background-color: gray;
+
+}
+
+h1{
+	float: center;
+}
+#show_id{
+	background-color: red;
+}
